@@ -25,6 +25,4 @@
 hs_err_pid*
 
 .idea
-src/com/romaniuk/generator/
-src/com/romaniuk/service/
 test_export.txt
