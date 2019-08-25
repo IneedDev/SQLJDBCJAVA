@@ -1,12 +1,19 @@
 package com.romaniuk.generator;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Provider {
     boolean gotNumber = false;
     int theNumber;
     Map<Integer, StringBuffer> myMap = new ConcurrentHashMap<Integer, StringBuffer>();
+    Set<String> mySet = new HashSet<>();
+
+    public Set<String> getMySet() {
+        return mySet;
+    }
 
     public boolean isGotNumber() {
         return gotNumber;
@@ -20,9 +27,10 @@ public class Provider {
         return myMap;
     }
 
-    public void fillMyMap(){
+    public void fillMySet(){
 
-        for (int i = 0; i< 100; i++) {
+        int tableSize = 10000000;
+        while (mySet.size()!=tableSize){
             StringBuffer stringBuffer = new StringBuffer();
             String year = Gen.pierwsze();
             String month = Gen.drugie();
@@ -31,11 +39,17 @@ public class Provider {
             year = year.substring(2);
             String input = year + month + day + number;
             String str = Gen.kontrolna(input);
-            myMap.put(i,stringBuffer.append(year)
+            String sbToString = stringBuffer.append(year)
                     .append(month)
                     .append(day)
                     .append(number)
-                    .append(str));
+                    .append(str).toString();
+            mySet.add(sbToString);
+//            myMap.put(i,stringBuffer.append(year)
+//                    .append(month)
+//                    .append(day)
+//                    .append(number)
+//                    .append(str));
         }
     }
 

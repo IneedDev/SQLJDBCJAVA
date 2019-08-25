@@ -9,9 +9,7 @@ public class Gen {
         int wynik, x = 1800, y = 2099;
         wynik = rand.nextInt(y - x + 1) + x;
         String rok = Integer.toString(wynik);
-
         return (rok);
-
     }
 
     public static String drugie() {
